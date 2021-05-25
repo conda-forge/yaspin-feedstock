@@ -1,5 +1,5 @@
 {% set name = "yaspin" %}
-{% set version = "1.5.0" %}
+{% set version = "2.0.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/yaspin-{{ version }}.tar.gz
-  sha256: d8fc9bc1c8be225877ea6e2e08fec96c2b52e233525a5c40b92d373f015439c6
+  sha256: 0498039b3e110f53824417a9f59418a20843e8752b8b15c26bb81a659d4aec5c
 
 build:
   number: 0
