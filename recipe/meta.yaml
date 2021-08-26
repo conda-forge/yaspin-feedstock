@@ -23,6 +23,7 @@ requirements:
   run:
     - python >=3.6,<4.0
     - termcolor >=1.1.0,<2.0.0
+    - dataclasses >=0.8,<0.9  # remove this when dropping py36
 
 test:
   imports:
