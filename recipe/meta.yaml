@@ -9,6 +9,10 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/yaspin-{{ version }}.tar.gz
   sha256: febdf35f3e0e45845dc2caa79a18780f9ec7a85a37a9a2c0389b314ba82d8912
+  patches:
+    # Conda-forge provides a package for termcolor
+    # let us just manage the dependency ourselves
+    - no_termcolor_whl_on_conda-forge.patch
 
 build:
   number: 0
