@@ -18,12 +18,15 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6,<4.0
+    - python >=3.7,<4.0
     - poetry
   run:
-    - python >=3.6,<4.0
-    - termcolor >=1.1.0,<2.0.0
-    - dataclasses >=0.8,<0.9  # remove this when dropping py36
+    - python >=3.7,<4.0
+    # Upstream doesn't think it supports termcolor 2
+    # but it really does. No code was changed as part 
+    # of the dependecy update
+    # https://github.com/pavdmyt/yaspin/pull/212
+    - termcolor >=1.1.0,<3.0.0
 
 test:
   imports:
