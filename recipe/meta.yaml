@@ -1,5 +1,5 @@
 {% set name = "yaspin" %}
-{% set version = "2.2.0" %}
+{% set version = "2.5.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/yaspin-{{ version }}.tar.gz
-  sha256: febdf35f3e0e45845dc2caa79a18780f9ec7a85a37a9a2c0389b314ba82d8912
+  sha256: f96ab3b5c42e1eaa6af3193508082309d9dc43f6963339f9aa606003ee8d7e63
   patches:
     # Conda-forge provides a package for termcolor
     # let us just manage the dependency ourselves
