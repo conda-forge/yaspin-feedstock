@@ -1,5 +1,5 @@
 {% set name = "yaspin" %}
-{% set version = "2.2.0" %}
+{% set version = "3.1.0" %}
 
 
 package:
@@ -7,15 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/yaspin-{{ version }}.tar.gz
-  sha256: febdf35f3e0e45845dc2caa79a18780f9ec7a85a37a9a2c0389b314ba82d8912
-  patches:
-    # Conda-forge provides a package for termcolor
-    # let us just manage the dependency ourselves
-    - no_termcolor_whl_on_conda-forge.patch
+  url: https://pypi.org/packages/source/y/yaspin/yaspin-{{ version }}.tar.gz
+  sha256: 7b97c7e257ec598f98cef9878e038bfa619ceb54ac31d61d8ead2b3128f8d7c7
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -25,12 +21,8 @@ requirements:
     - python {{ python_min }}
     - poetry
   run:
-    - python >={{ python_min }},<4.0
-    # Upstream doesn't think it supports termcolor 2
-    # but it really does. No code was changed as part 
-    # of the dependecy update
-    # https://github.com/pavdmyt/yaspin/pull/212
-    - termcolor >=1.1.0,<3.0.0
+    - python >={{ python_min }}
+    - termcolor >=2.2.0,<2.4.0
 
 test:
   imports:
