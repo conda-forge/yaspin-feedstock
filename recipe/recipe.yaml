@@ -1,0 +1,93 @@
+context:
+  version: 3.4.0
+
+package:
+  name: yaspin
+  version: ${{ version }}
+
+source:
+- url: https://pypi.org/packages/source/y/yaspin/yaspin-${{ version }}.tar.gz
+  sha256: a83a81ac7a9d161e116fb668a7e4d10d87fb18d02b4b08a17b7e472f465f3c90
+
+build:
+  script: ${{ PYTHON }} -m pip install .
+  noarch: python
+  number: 0
+
+requirements:
+  host:
+  - python ${{ python_min }}.*
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=${{ python_min }}
+  - termcolor >=3.2, <4.0
+
+tests:
+- python:
+    imports:
+    - yaspin
+    pip_check: true
+    python_version: ${{ python_min }}.*
+
+about:
+  summary: Yet Another Terminal Spinner
+  description: |
+    `Yaspin` provides a full-featured terminal spinner to show the progress during long-hanging operations.
+
+    ![demo](https://raw.githubusercontent.com/pavdmyt/yaspin/master/gifs/demo.gif)
+
+    It is easy to integrate into existing codebase by using it as a [context manager](https://docs.python.org/3/reference/datamodel.html#context-managers)
+    or as a function [decorator](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/):
+
+    ```python
+    import time
+    from yaspin import yaspin
+
+    # Context manager:
+    with yaspin():
+        time.sleep(3)  # time consuming code
+
+    # Function decorator:
+    @yaspin(text="Loading...")
+    def some_operations():
+        time.sleep(3)  # time consuming code
+
+    some_operations()
+    ```
+
+    **Yaspin** also provides an intuitive and powerful API. For example, you can easily summon a shark:
+
+    ```python
+    import time
+    from yaspin import yaspin
+
+    with yaspin().white.bold.shark.on_blue as sp:
+        sp.text = "White bold shark in a blue sea"
+        time.sleep(5)
+    ```
+
+    ![shark](https://raw.githubusercontent.com/pavdmyt/yaspin/master/gifs/shark.gif)
+
+    ## Features
+
+    - Runs at all major **CPython** versions (*3.10*, *3.11*, *3.12*, *3.13*, *3.14*), **PyPy**
+    - Supports all (70+) spinners from [cli-spinners](https://github.com/sindresorhus/cli-spinners)
+    - Supports all *colors*, *highlights*, *attributes* and their mixes from [termcolor](https://pypi.org/project/termcolor/) library
+    - Easy to combine with other command-line libraries, e.g. [prompt-toolkit](https://github.com/jonathanslenders/python-prompt-toolkit/)
+    - Flexible API, easy to integrate with existing code
+    - User-friendly API for handling POSIX [signals](https://www.computerhope.com/unix/signals.htm)
+    - Safe **pipes** and **redirects**:
+
+    ```bash
+    $ python script_that_uses_yaspin.py > script.log
+    $ python script_that_uses_yaspin.py | grep ERROR
+    ```
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/pavdmyt/yaspin
+
+extra:
+  recipe-maintainers:
+    - ickc
+    - claudiushaag
