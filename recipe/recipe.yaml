@@ -1,5 +1,5 @@
 context:
-  version: "3.5.0"
+  version: "3.5.1"
 
 package:
   name: yaspin
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/y/yaspin/yaspin-${{ version }}.tar.gz
-    sha256: 736d08081bcfc1a18e0c0610939f9cb419441f305ff5d50055d0e4688b36baf9
+    sha256: 5cb55fb774eae3543fdd30b5958c46e348dfd316a8b289c9f8db2c6f8a511846
 
 build:
   script: ${{ PYTHON }} -m pip install .
